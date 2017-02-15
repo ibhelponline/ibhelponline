@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0113)http://www.ibonlinetutors.com/usereditor/fckeditor/editor/fckeditor.html?InstanceName=txtQuestion&Toolbar=Default -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>FCKeditor</title>
+	<meta name="robots" content="noindex, nofollow">
+	
+	<meta http-equiv="Cache-Control" content="public">
+	<script type="text/javascript">
+
+// #1645: Alert the user if opening FCKeditor in FF3 from local filesystem
+// without security.fileuri.strict_origin_policy disabled.
+if ( document.location.protocol == 'file:' )
+{
+	try
+	{
+		window.parent.document.domain ;
+	}
+	catch ( e )
+	{
+		window.addEventListener( 'load', function()
+			{
+				document.body.innerHTML = '\
+					<div style="border: 1px red solid; font-family: arial; font-size: 12px; color: red; padding:10px;">\
+						<p>\
+							<b>Your browser security settings don\'t allow FCKeditor to be opened from\
+							the local filesystem.<\/b>\
+						<\/p>\
+						<p>\
+							Please open the <b>about:config<\/b> page and disable the\
+							&quot;security.fileuri.strict_origin_policy&quot; option; then load this page again.\
+						<\/p>\
+						<p>\
+							Check our <a href="http://docs.fckeditor.net/FCKeditor_2.x/Developers_Guide/FAQ#ff3perms">FAQ<\/a>\
+							for more information.\
+						<\/p>\
+					<\/div>' ;
+			}, false ) ;
+	}
+}
+
+// Save a reference to the default domain.
+var FCK_ORIGINAL_DOMAIN ;
+
+// Automatically detect the correct document.domain (#123).
+(function()
+{
+	var d = FCK_ORIGINAL_DOMAIN = document.domain ;
+
+	while ( true )
+	{
+		// Test if we can access a parent property.
+		try
+		{
+			var test = window.parent.document.domain ;
+			break ;
+		}
+		catch( e ) {}
+
+		// Remove a domain part: www.mytest.example.com => mytest.example.com => example.com ...
+		d = d.replace( /.*?(?:\.|$)/, '' ) ;
+
+		if ( d.length == 0 )
+			break ;		// It was not able to detect the domain.
+
+		try
+		{
+			document.domain = d ;
+		}
+		catch (e)
+		{
+			break ;
+		}
+	}
+})() ;
+
+// Save a reference to the detected runtime domain.
+var FCK_RUNTIME_DOMAIN = document.domain ;
+
+var FCK_IS_CUSTOM_DOMAIN = ( FCK_ORIGINAL_DOMAIN != FCK_RUNTIME_DOMAIN ) ;
+
+// Instead of loading scripts and CSSs using inline tags, all scripts are
+// loaded by code. In this way we can guarantee the correct processing order,
+// otherwise external scripts and inline scripts could be executed in an
+// unwanted order (IE).
+
+function LoadScript( url )
+{
+	document.write( '<scr' + 'ipt type="text/javascript" src="' + url + '"><\/scr' + 'ipt>' ) ;
+}
+
+// Main editor scripts.
+var sSuffix = ( /*@cc_on!@*/false ) ? 'ie' : 'gecko' ;
+
+LoadScript( 'js/fckeditorcode_' + sSuffix + '.js' ) ;
+
+// Base configuration file.
+LoadScript( '../fckconfig.js' ) ;
+
+	</script><script type="text/javascript" src="./fckeditorcode_gecko.js"></script></head></html>

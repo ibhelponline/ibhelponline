@@ -1,0 +1,31 @@
+/* ######### Matt Black Strip Main Menu Bar CSS ######### */
+
+.mattblackmenu ul{
+margin:0px 0 0px 0px;
+padding:10px 0 0px 62px;
+z-index:1000;
+float:left;
+
+
+}
+.mattblackmenu li{
+display: inline;
+margin:0px;
+padding:0px;
+
+}
+.mattblackmenu li a{
+ margin:0px; padding:0px 10px 0px 10px; float:left; text-decoration:none; border:none; color:#0076BE; line-height:33px; float:left; font-size:14px; font-weight:bold;
+}
+.mattblackmenu li a span{ margin:0px 0px 0 0px; padding:0px 14px 0px 0px; float:left;
+}
+.mattblackmenu li a:hover{margin:0px; padding:0px 14px 0px 10px; float:left; background:url(../images/left-span.png) 0px 3px no-repeat; text-decoration:none; color:#FEFEFF; line-height:33px;
+}
+.mattblackmenu li a:hover span {margin:0px 0 0 0px; padding:0px 10px 0px 0px;  background:url(../images/right-span.png) right 3px no-repeat; float:left; 
+text-align:right; line-height:33px;
+}
+.mattblackmenu li a.active{
+margin:0px; padding:0px 14px 0px 10px; float:left;  background:url(../images/left-span.png) 0px 3px no-repeat; text-decoration:none; color:#333333; line-height:33px;
+ color:#FEFEFF;}
+.mattblackmenu li a.active span {margin:0px 0 0 0px; padding:0px 10px 0px 0px;  background:url(../images/right-span.png) right 3px no-repeat; float:left; 
+text-align:right; line-height:33px;}
